@@ -1,0 +1,28 @@
+.nav-bar{
+    background-color: aqua;
+    margin: 0;
+    padding: 12px;
+    text-align: center;
+}
+.nav-bar li {
+    display: inline-block;
+    margin: 0 22px;
+    list-style: none;
+    align-items: center;
+}
+.nav-bar li a{
+    text-decoration: none;
+    color: black;
+    font-size: larger;
+    ;
+}
+.nav-right{
+    text-align: right;
+}
+.microsoft-img{
+    width: 60px;
+    height: 40px;
+    margin-left: 15px;
+    margin-top: 5px;
+    position: absolute;
+}
