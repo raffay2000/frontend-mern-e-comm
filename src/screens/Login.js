@@ -8,6 +8,9 @@ export default function Login() {
     const [password, setpassword] = useState("");
     const LoginBtn = async()=>{
         var data = {email,password};
+        // if(!email || !password){
+        //     return alert("Please fill all the fields");
+        // }
         console.log(data);
         let response = await fetch("http://localhost:8000/login",{
             method: "post",
@@ -21,7 +24,7 @@ export default function Login() {
         localStorage.setItem("auth", JSON.stringify(responseData));
         if(responseData.result){
             alert(responseData.result);
-        }else{
+        }else if(!responseData.result){
             navigate("/");
         }
     }

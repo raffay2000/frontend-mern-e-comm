@@ -15,7 +15,7 @@
 .container button{
     font-size: 80%;
     border-radius: 15px;
-    width: 10%;
+    /* width: 10%; */
     height: 7%;
     margin-top: 2%;
 }

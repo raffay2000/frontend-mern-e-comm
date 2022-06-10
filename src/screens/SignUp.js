@@ -34,7 +34,7 @@ export default function SignUp() {
   },[]);
   return (
     <>
-      <h1 className="about">About Form</h1>
+      <h1 className="about">SignUp Form</h1>
       <div className="container">
         <input
           type="text"

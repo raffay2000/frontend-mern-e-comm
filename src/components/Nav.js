@@ -16,13 +16,13 @@ export default function Nav() {
       <ul className='nav-bar'
       >
         <li>
-          <Link  to="/">Home</Link>
+          <Link  to="/">Products</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/add-products">AddProducts</Link>
         </li>
         <li>
-          <Link to="/contact">contact</Link>
+          <Link to="/update-products">Update Products</Link>
         </li>
         <li>
            <Link to="/signup" onClick={logoutBtn}>Logout ({JSON.parse(auth).name})</Link>
