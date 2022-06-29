@@ -8,10 +8,9 @@ export default function Login() {
     const [password, setpassword] = useState("");
     const LoginBtn = async()=>{
         var data = {email,password};
-        // if(!email || !password){
-        //     return alert("Please fill all the fields");
-        // }
-        console.log(data);
+        if(!email || !password){
+            return alert("Please fill all the fields");
+        }
         let response = await fetch("http://localhost:8000/login",{
             method: "post",
             body: JSON.stringify(data),
@@ -21,16 +20,16 @@ export default function Login() {
         })
         let responseData = await response.json();
         console.log(responseData);
-        localStorage.setItem("auth", JSON.stringify(responseData));
-        if(responseData.result){
-            alert(responseData.result);
-        }else if(!responseData.result){
-            navigate("/");
+        if(responseData.auth){
+          localStorage.setItem("auth", JSON.stringify(responseData));
+          navigate("/products");
+        }else{
+          alert(responseData.result);
         }
     }
     useEffect(()=>{
         if(auth){
-            navigate('/');
+            navigate('/products');
         }
     },[])
   return (

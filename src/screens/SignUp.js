@@ -24,12 +24,13 @@ export default function SignUp() {
     let responseData = await response.json();
     console.log(responseData);
     localStorage.setItem("auth", JSON.stringify(responseData));
-    navigate("/");
+
+    navigate("/products");
   };
   useEffect(()=>{
     const auth = localStorage.getItem('auth');
     if(auth){
-      navigate('/');
+      navigate('/products');
     }
   },[]);
   return (

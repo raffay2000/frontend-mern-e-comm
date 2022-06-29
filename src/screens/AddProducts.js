@@ -27,7 +27,7 @@ export default function AddProducts() {
     });
     let responseData = await response.json();
     console.log(responseData);
-    navigate("/");
+    navigate("/products");
   };
   return (
     <div className="container">

@@ -3,10 +3,12 @@ import { Link,useNavigate } from "react-router-dom";
 import "./Nav.css"
 export default function Nav() {
   const auth = localStorage.getItem('auth');
+  // console.log(JSON.parse(auth).user.name);
   const navigate = useNavigate();
   const logoutBtn = () => {
     localStorage.removeItem('auth');
     navigate('/signup')
+    
   }
   return (
     <div>
@@ -16,16 +18,16 @@ export default function Nav() {
       <ul className='nav-bar'
       >
         <li>
-          <Link  to="/">Products</Link>
+          <Link  to="/products">Products</Link>
         </li>
         <li>
           <Link to="/add-products">AddProducts</Link>
         </li>
+        {/* <li>
+          <Link to="/update-products/:id">Update Products</Link>
+        </li> */}
         <li>
-          <Link to="/update-products">Update Products</Link>
-        </li>
-        <li>
-           <Link to="/signup" onClick={logoutBtn}>Logout ({JSON.parse(auth).name})</Link>
+           <Link to="/signup" onClick={logoutBtn}>Logout ({JSON.parse(auth).user.name})</Link>
         </li>
       </ul>
         </>

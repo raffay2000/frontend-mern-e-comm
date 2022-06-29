@@ -16,10 +16,10 @@ function App() {
       <Nav/>
       <Routes>
         <Route element={<PrivateComponent/>}>
-        <Route path="/" element={<Products/>} />
+        <Route path="/products" element={<Products/>} />
         <Route path="/logout" element={<h1>logout</h1>} />
         <Route path="/add-products" element={<AddProducts/>} />
-        <Route path="/update-products" element={<UpdateProducts/>} />
+        <Route path="/update-products/:id" element={<UpdateProducts/>} />
         </Route>
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/login" element={<Login/>} />
