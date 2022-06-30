@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Products() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const getData = () => {
     let auth = JSON.parse(localStorage.getItem("auth"));
-    auth = auth.auth;
-    // console.log(auth)
     var requestOptions = {
       method: "GET",
       redirect: "follow",
@@ -27,7 +24,10 @@ export default function Products() {
   const deleteComponent= async(id)=>{
     var requestOptions = {
       method: 'DELETE',
-      redirect: 'follow'
+      redirect: 'follow',
+      headers: {
+        "authorization": `Bearer ${JSON.parse(localStorage.getItem("auth"))}`
+      }
     };
     
     fetch(`http://localhost:8000/product/${id}`, requestOptions)
@@ -43,7 +43,9 @@ export default function Products() {
   const SearchFunction = async(e) => {
     let key = e.target.value;
     if(key){
-      let response = await fetch(`http://localhost:8000/search/${key}`)
+      let response = await fetch(`http://localhost:8000/search/${key}`,{
+        headers:{"authorization": `Bearer ${JSON.parse(localStorage.getItem("auth"))}`}
+      })
       let result = await response.json();
       setProducts(result);
     }

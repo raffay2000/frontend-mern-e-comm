@@ -7,40 +7,27 @@
 }
 
 .productsBtn{
-    /* width: 10%; */
-    /* height: 50px; */
     background-color: #00bcd4;
     color: white;
-    border: 5px solid #0f0f0f;
-    border-radius: 5px;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 50px;
-    align-self: flex-start;
-    position: absolute;
-    top: 70%;
+    padding: 15px;
+    margin: 15px 0px;
 }
 .productsBtn:hover{
     background-color: #0f0f0f;
     color: white;
 }
-.span{
-    font-size: 20px;
-    font-weight: bold;
-    color: red;
-}
-.inputTag{
-    width: 100%;
+
+.inputContainer .inputTag{
+    width: 300px;
     height: 50px;
-    border: 5px solid #0f0f0f;
     border-radius: 5px;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    align-self: flex-start;
+    border: 1px solid #00bcd4;
+    padding-left: 10px;
+    margin-bottom: 10px;
 }
-.inputContainer{
-    align-items: flex-start;
-    margin-left: 1px;
-    position: sticky;
+.span{
+    color: #f03a0d;
+    font-size: 12px;
 }
+
+

@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import {useNavigate} from "react-router-dom"
-
+import "./login.css"
 export default function Login() {
     const navigate = useNavigate();
     const auth = localStorage.getItem('auth');
@@ -21,7 +21,8 @@ export default function Login() {
         let responseData = await response.json();
         console.log(responseData);
         if(responseData.auth){
-          localStorage.setItem("auth", JSON.stringify(responseData));
+          localStorage.setItem("user", JSON.stringify(responseData.user));
+          localStorage.setItem("auth", JSON.stringify(responseData.auth));
           navigate("/products");
         }else{
           alert(responseData.result);
@@ -34,8 +35,8 @@ export default function Login() {
     },[])
   return (
     <>
-      <h1 className="about">Login Here</h1>
       <div className="container">
+      <h1 className="about">Login Here</h1>
         <input
           type="text"
           placeholder="Email"

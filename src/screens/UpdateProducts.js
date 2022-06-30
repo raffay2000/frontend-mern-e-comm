@@ -21,6 +21,7 @@ const  UpdateProducts=()=> {
         body: JSON.stringify(raw),
         headers: {
           "Content-Type": "application/json",
+          "authorization": `Bearer ${JSON.parse(localStorage.getItem("auth"))}`
         }
       })
       let result = await response.json();
@@ -38,7 +39,9 @@ useEffect(()=>{
   getSingleProduct();
 },[])
   const getSingleProduct = async () => {
-    let data = await fetch(`http://localhost:8000/product/${params.id}`)
+    let data = await fetch(`http://localhost:8000/product/${params.id}`,{
+      headers:{"authorization": `Bearer ${JSON.parse(localStorage.getItem("auth"))}`}
+    })
     let result = await data.json();
     if(result){
       setname(result.name);
@@ -64,7 +67,9 @@ useEffect(()=>{
           setname(e.target.value);
         }}
       />
+      <div>
       {error && !name && <span className="span"> Error : Enter Name </span>}
+      </div>
       <input
       className="inputTag"
         type="number"
@@ -74,7 +79,9 @@ useEffect(()=>{
           setprice(e.target.value);
         }}
       />
+      <div>
       {error && !price && <span className="span"> Error : Enter Price </span>}
+      </div>
       <input
       className="inputTag"
         type="text"
@@ -84,7 +91,9 @@ useEffect(()=>{
           setcompany(e.target.value);
         }}
       />
+      <div>
       {error && !company && <span className="span"> Error : Enter company </span>}
+      </div>
       <input
       className="inputTag"
         type="text"
@@ -94,7 +103,9 @@ useEffect(()=>{
           setcategory(e.target.value);
         }}
       />
+      <div>
       {error && !category && <span className="span"> Error : Enter Category </span>}
+      </div>
       <input
       className="inputTag"
         type="text"
@@ -104,7 +115,9 @@ useEffect(()=>{
           setdescription(e.target.value);
         }}
       />
+      <div>
       {error && !description && <span className="span"> Error : Enter Description </span>}
+      </div>
     </div>
     <button className="productsBtn" onClick={()=>{
       PressUpdateBtn()

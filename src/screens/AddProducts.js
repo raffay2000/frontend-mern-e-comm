@@ -10,7 +10,7 @@ export default function AddProducts() {
   const [description, setdescription] = useState("");
   const [error, seterror] = useState(false);
   const AddProductsData = async () => {
-    let userID = localStorage.getItem("auth");
+    let userID = localStorage.getItem("user");
     userID = JSON.parse(userID)._id;
     console.log(userID);
     var data = { name, price, company, category, description, userID };
@@ -23,11 +23,14 @@ export default function AddProducts() {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        "authorization": `Bearer ${JSON.parse(localStorage.getItem("auth"))}`
       },
     });
     let responseData = await response.json();
-    console.log(responseData);
-    navigate("/products");
+    // console.log(responseData);
+    if(responseData){
+      navigate("/products");
+    }
   };
   return (
     <div className="container">
@@ -42,7 +45,9 @@ export default function AddProducts() {
             setname(e.target.value);
           }}
         />
+        <div>
         {error && !name && <span className="span"> Error : Enter Name </span>}
+        </div>
         <input
         className="inputTag"
           type="number"
@@ -52,7 +57,9 @@ export default function AddProducts() {
             setprice(e.target.value);
           }}
         />
+        <div>
         {error && !price && <span className="span"> Error : Enter Price </span>}
+        </div>
         <input
         className="inputTag"
           type="text"
@@ -62,7 +69,9 @@ export default function AddProducts() {
             setcompany(e.target.value);
           }}
         />
+        <div>
         {error && !company && <span className="span"> Error : Enter company </span>}
+        </div>
         <input
         className="inputTag"
           type="text"
@@ -72,7 +81,9 @@ export default function AddProducts() {
             setcategory(e.target.value);
           }}
         />
+        <div>
         {error && !category && <span className="span"> Error : Enter Category </span>}
+        </div>
         <input
         className="inputTag"
           type="text"
@@ -82,8 +93,10 @@ export default function AddProducts() {
             setdescription(e.target.value);
           }}
         />
+        <div>
         {error && !description && <span className="span"> Error : Enter Description </span>}
-      </div>
+        </div>
+        </div>
       <button className="productsBtn" onClick={AddProductsData}>
         {" "}
         Add Product
